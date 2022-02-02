@@ -1,0 +1,38 @@
+body {
+    background-color: #5CDB95;
+    color: #05386B;
+    font-family: 'Teko', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+#clock, #stopwatch {
+    font-size: 30px;
+}
+
+.btn {
+    margin: 10px;
+    padding: 10px;
+    width: 100px;
+    border: 2px solid #8EE4AF;
+    background-color: #EDF5E1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    border: 2px solid #8EE4AF;
+    background-color: #8EE4AF;
+}
+
+.btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #8EE4AF;
+}

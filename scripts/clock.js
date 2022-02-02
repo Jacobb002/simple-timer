@@ -1,5 +1,3 @@
-let check = (x) => (x < 10 || x==0) ? ('0' + x) : x;
-
 function startTime() {
     const today = new Date();
     const clock = {

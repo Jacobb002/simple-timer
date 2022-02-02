@@ -33,15 +33,18 @@ const stopwatch = {
 
 function startStopwatch(stopTime) {
     if(stopTime == true) {
+        disableBtn(stopTime, 'btnStart');
         stopwatch.start(true);
         timeout = setTimeout('startStopwatch(true)', 1000);
     }
     else if(stopTime == false) {
+        disableBtn(stopTime, 'btnStart');
         clearTimeout(timeout);
     }
 }
 
 function clearStopwatch() {
     startStopwatch(false);
+    disableBtn(false, 'btnStart');
     stopwatch.clear();
 }
