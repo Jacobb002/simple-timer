@@ -3,13 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="index.css">
-        <script src="./index.js"></script>
+        <script src="./scripts/clock.js"></script>
+        <script src="./scripts/stopwatch.js"></script>
         <title>Simple timer</title>
     </head>
     <body onload="startTime()">
         <div>
             <h1>Clock</h1>
             <div id="clock">00:00:00</div>
+        </div>
+        <div>
+            <h1>Stopwatch</h1>
+            <div id="stopwatch">00:00:00</div>
+            <button onclick="startStopwatch(true)">Start</button>
+            <button onclick="startStopwatch(false)">Stop</button>
+            <button onclick="clearStopwatch()">Restart</button>
         </div>
     </body>
 </html>
