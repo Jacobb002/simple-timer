@@ -1,4 +1,15 @@
 let timeout;
+let roundArray = [];
+
+class round {
+    constructor(number, hour, minute, second) {
+        this.roundNumber = number;
+        this.roundHour = hour;
+        this.roundMinute = minute;
+        this.roundSecond = second;
+    }
+}
+
 const stopwatch = {
     hour: '00',
     minute: '00',
@@ -28,6 +39,18 @@ const stopwatch = {
         this.minute = '00';
         this.second = '00';
         this.load();
+    },
+    number: 1,
+    roundArray: [],
+    addRound: function() {
+        this.roundArray[this.roundNumber] = this.hour + ':' + this.minute + ':' + this.second;
+        //this.roundArray[this.number] = new round(this.number, this.hour, this.minute, this.second);
+        console.log(this.roundArray[this.number]);
+        this.number++;
+    },
+    loadRound: function() {
+        // document.getElementById('roundList').innerHTML = "<div id=round" + this.number + ">" + this.roundArray[this.number].roundNumber + ". " + this.roundArray[this.number].roundHour + ":" + this.roundArray[this.number].roundMinute + ":" + this.roundArray[this.number].roundSecond + "</div>";
+        document.getElementById('roundList').innerHTML = this.roundArray[this.number];
     }
 }
 
@@ -47,4 +70,9 @@ function clearStopwatch() {
     startStopwatch(false);
     disableBtn(false, 'btnStart');
     stopwatch.clear();
+}
+
+function addRound() {
+    stopwatch.addRound();
+    stopwatch.loadRound();
 }

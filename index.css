@@ -9,8 +9,13 @@ h1 {
     font-size: 40px;
 }
 
-#clock, #stopwatch {
+#clock_time, #stopwatch {
     font-size: 30px;
+}
+
+#clock_date {
+    font-size: 20px;
+    margin-top: -3px;
 }
 
 .btn {
@@ -33,6 +38,7 @@ h1 {
 
 .btn[disabled] {
     opacity: 0.6;
+    color: red;
     cursor: not-allowed;
     background-color: #8EE4AF;
 }
