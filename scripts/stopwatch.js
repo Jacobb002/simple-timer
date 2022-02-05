@@ -1,6 +1,8 @@
 let timeout;
 let roundArray = [];
 
+let convertToNumber = (x) => (typeof x === 'string') ? parseInt(x, 10) : x;
+
 class round {
     constructor(number, hour, minute, second) {
         this.roundNumber = number;
@@ -38,30 +40,34 @@ const stopwatch = {
         this.hour = '00';
         this.minute = '00';
         this.second = '00';
+        this.roundNumber = 1;
+        document.getElementById('roundList').innerHTML = '<tr id="roundTemp"></tr>';
         this.load();
     },
-    number: 1,
-    roundArray: [],
-    addRound: function() {
-        this.roundArray[this.roundNumber] = this.hour + ':' + this.minute + ':' + this.second;
-        //this.roundArray[this.number] = new round(this.number, this.hour, this.minute, this.second);
-        console.log(this.roundArray[this.number]);
-        this.number++;
+    roundNumber: 1,
+    tempRound: null,
+    loadTempRound: function() {
+        document.getElementById('roundTemp').innerHTML = '<th>' + '</th>' + '<th>' + this.hour + 'h' + '</th>' + '<th>' + this.minute + 'm' + '</th>' + '<th>' + this.second + 's' + '</th>';
     },
-    loadRound: function() {
-        // document.getElementById('roundList').innerHTML = "<div id=round" + this.number + ">" + this.roundArray[this.number].roundNumber + ". " + this.roundArray[this.number].roundHour + ":" + this.roundArray[this.number].roundMinute + ":" + this.roundArray[this.number].roundSecond + "</div>";
-        document.getElementById('roundList').innerHTML = this.roundArray[this.number];
-    }
+    addRound: function() {
+        this.tempRound = new round(this.roundNumber, this.hour, this.minute, this.second);
+        document.getElementById('roundList').innerHTML += '<tr>' + '<th>' + this.roundNumber + '</th>' + '<th>' + this.hour + 'h' + '</th>' + '<th>' + this.minute + 'm' + '</th>' + '<th>' + this.second + 's' + '</th>' + '<th>' + 'null' + '</th>' +'</tr>';
+        console.log(this.tempRound)
+        this.roundNumber++;
+    },
 }
 
 function startStopwatch(stopTime) {
     if(stopTime == true) {
         disableBtn(stopTime, 'btnStart');
+        disableBtn(!stopTime, 'btnRound');
         stopwatch.start(true);
+        stopwatch.loadTempRound();
         timeout = setTimeout('startStopwatch(true)', 1000);
     }
     else if(stopTime == false) {
         disableBtn(stopTime, 'btnStart');
+        disableBtn(!stopTime, 'btnRound');
         clearTimeout(timeout);
     }
 }
@@ -69,10 +75,10 @@ function startStopwatch(stopTime) {
 function clearStopwatch() {
     startStopwatch(false);
     disableBtn(false, 'btnStart');
+    disableBtn(true, 'btnRound');
     stopwatch.clear();
 }
 
 function addRound() {
     stopwatch.addRound();
-    stopwatch.loadRound();
 }
