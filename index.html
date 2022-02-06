@@ -9,6 +9,7 @@
         <script src="./scripts/index.js"></script>
         <script src="./scripts/clock.js"></script>
         <script src="./scripts/stopwatch.js"></script>
+        <script src="./scripts/countdown.js"></script>
         <title>Simple timer</title>
     </head>
     <body onload="startTime()">
@@ -25,6 +26,24 @@
             <button class="btn" onclick="clearStopwatch()">Restart</button>
             <button class="btn" id="btnRound" onclick="addRound()" disabled>Round</button>
             <table id="roundList"><tr id="roundTemp"></tr></table>
+        </div>
+        <div>
+            <h1>Countdown</h1>
+            <div id="countdown">00h 00m 00s</div>
+            <div class="countdownDate">
+                <div>
+                    <input class="inputCountdown" id="inputHour" type="number" min="0"/>
+                    <p>Hour</p>
+                </div>
+                <div>
+                    <input class="inputCountdown" id="inputMinute" type="number" min="0" max="60"/>
+                    <p>Minute</p>
+                </div>
+                <div>
+                    <input class="inputCountdown" id="inputSecond" type="number" min="0" max="60"/>
+                    <p>Second</p>
+                </div>
+            </div>
         </div>
     </body>
 </html>

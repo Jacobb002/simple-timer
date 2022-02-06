@@ -9,7 +9,7 @@ h1 {
     font-size: 40px;
 }
 
-#clock_time, #stopwatch {
+#clock_time, #stopwatch, #countdown {
     font-size: 30px;
 }
 
@@ -61,10 +61,50 @@ table {
     transition-duration: 0.4s;
 }
 
+table tr th {
+    width: 88px
+}
+
+.tableNumber {
+    width: 44px;
+}
+
 table tr:hover {
     background-color: #8EE4AF;
 }
 
 table tr th:hover {
     background-color: #379683;
+}
+
+.countdownDate {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.inputCountdown {
+    padding: 8px;
+    width: 100px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 18px;
+    border: 2px solid #8EE4AF;
+    background-color: #EDF5E1;
+    transition-duration: 0.4s;
+}
+
+.inputCountdown:hover, .inputCountdown:focus {
+    border: 2px solid #8EE4AF;
+    background-color: #8EE4AF;
+}
+
+.countdownDate div p {
+    margin: 8px;
+    font-size: 18px;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
