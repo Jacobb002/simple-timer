@@ -6,17 +6,17 @@ function startTime() {
         minute: today.getMinutes(),
         second: today.getSeconds(),
     }
-    clock.hour = check(clock.hour);
-    clock.minute = check(clock.minute);
-    clock.second = check(clock.second);
+    clock.hour = addZero(clock.hour);
+    clock.minute = addZero(clock.minute);
+    clock.second = addZero(clock.second);
 
     const date = {
         day: today.getDay(),
         month: today.getMonth(),
         year: today.getFullYear(),
     }
-    date.day = check(date.day);
-    date.month = check(date.month);
+    date.day = addZero(date.day);
+    date.month = addZero(date.month);
 
     document.getElementById('clock_time').innerHTML = clock.hour + ':' + clock.minute + ':' + clock.second;
     document.getElementById('clock_date').innerHTML = date.day + '.' + date.month + '.' + date.year;

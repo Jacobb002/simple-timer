@@ -22,15 +22,15 @@ const stopwatch = {
     start: function(status) {
         if(status == true) {
             this.second++;
-            this.second = check(this.second);
+            this.second = addZero(this.second);
             if(this.second == 60) {
                 this.minute++;
-                this.minute = check(this.minute);
+                this.minute = addZero(this.minute);
                 this.second = 0;
             }
             if(this.minute == 60) {
                 this.hour++;
-                this.hour = check(this.hour);
+                this.hour = addZero(this.hour);
                 this.minute = 0;
             }
         }
