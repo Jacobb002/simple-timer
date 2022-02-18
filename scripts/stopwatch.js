@@ -17,7 +17,7 @@ const stopwatch = {
     minute: '00',
     second: '00',
     load: function() {
-        document.getElementById('stopwatch').innerHTML = this.hour + ':' + this.minute + ':' + this.second;
+        document.querySelector('#stopwatch').innerHTML = `${this.hour}:${this.minute}:${this.second}`;
     },
     start: function(status) {
         if(status == true) {
@@ -47,12 +47,12 @@ const stopwatch = {
     roundNumber: 1,
     tempRound: null,
     liveRound: function() {
-        document.getElementById('roundTemp').innerHTML = '<th>' + '</th>' + '<th>' + this.hour + 'h' + '</th>' + '<th>' + this.minute + 'm' + '</th>' + '<th>' + this.second + 's' + '</th>';
+        document.querySelector('#roundTemp').innerHTML = `<th></th><th>${this.hour}h</th><th>${this.minute}m</th><th>${this.second}s</th>`;
     },
     addRound: function() {
         this.tempRound = new round(this.roundNumber, this.hour, this.minute, this.second);
         console.log(this.tempRound);
-        document.getElementById('roundList').innerHTML += '<tr>' + '<th class="tableNumber">' + this.roundNumber + '</th>' + '<th>' + this.hour + 'h' + '</th>' + '<th>' + this.minute + 'm' + '</th>' + '<th>' + this.second + 's' + '</th>' + '<th>' + null + '</th>' +'</tr>';
+        document.querySelector('#roundList').innerHTML += `<tr><th class="tableNumber">${this.roundNumber}</th><th>${this.hour}h</th><th>${this.minute}m</th><th>${this.second}s</th></tr>`;
         this.roundNumber++;
     },
 }

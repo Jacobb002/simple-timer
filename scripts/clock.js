@@ -18,7 +18,7 @@ function startTime() {
     date.day = addZero(date.day);
     date.month = addZero(date.month);
 
-    document.getElementById('clock_time').innerHTML = clock.hour + ':' + clock.minute + ':' + clock.second;
-    document.getElementById('clock_date').innerHTML = date.day + '.' + date.month + '.' + date.year;
+    document.querySelector('#clock_time').innerHTML = `${clock.hour}:${clock.minute}:${clock.second}`;
+    document.querySelector('#clock_date').innerHTML = `${date.day}.${date.month}.${date.year}`;
     setTimeout(startTime, 1000);
 }

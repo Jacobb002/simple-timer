@@ -21,7 +21,8 @@ const countdown = {
     },
     load: function() {
         if(this.status) {
-            document.getElementById('countdown').innerHTML = this.hour + 'h ' + this.minute + 'm ' + this.second + 's';
+            // document.getElementById('countdown').innerHTML = this.hour + 'h ' + this.minute + 'm ' + this.second + 's';
+            document.querySelector('#countdown').innerHTML = `${this.hour}h ${this.minute}m ${this.second}s`;
         }
         else {
             document.getElementById('countdown').innerHTML = 'Wrong values!'
@@ -49,11 +50,11 @@ const countdown = {
             if(this.second == 0 && this.minute > 0 && this.hour > 0) {
                 this.minute--;
                 this.hour--;
-                this.second = 60;
+                this.second = 59;
             }
             if(this.second == 0 && this.minute > 0 && this.hour == 0) {
                 this.minute--;
-                this.second = 60;
+                this.second = 59;
             }
         }
         else if(this.second == 0) {
@@ -63,14 +64,14 @@ const countdown = {
                 if(this.hour > 0) {
                     this.hour--;
                     this.minute = 59;
-                    this.second = 60;
+                    this.second = 59;
                 }
             }
             else if(this.minute == 0) {
                 if(this.hour > 0) {
                     this.hour--;
                     this.minute = 59;
-                    this.second = 60;
+                    this.second = 59;
                 }
             }
         }
