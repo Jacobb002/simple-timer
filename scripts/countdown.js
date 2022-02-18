@@ -1,10 +1,10 @@
 let informaction = true;
+let countdownTimeout;
+
 const countdown = {
     hour: 0,
     minute: 0,
     second: 0,
-    tempMinute: null,
-    tempSecond: null,
     status: true,
     value: function() {
         this.hour = document.getElementById('inputHour').value;
@@ -22,7 +22,6 @@ const countdown = {
     load: function() {
         if(this.status) {
             document.getElementById('countdown').innerHTML = this.hour + 'h ' + this.minute + 'm ' + this.second + 's';
-            console.log(this.minute);
         }
         else {
             document.getElementById('countdown').innerHTML = 'Wrong values!'
@@ -33,8 +32,11 @@ const countdown = {
             this.value();
             this.load();
         }
-        else
+        else {
+            this.status = false;
             console.log('error');
+            this.load();
+        }
     },
     restart: function() {
         this.hour = 0;
@@ -60,13 +62,15 @@ const countdown = {
                 this.second = 60;
                 if(this.hour > 0) {
                     this.hour--;
-                    this.minute = 60;
+                    this.minute = 59;
+                    this.second = 60;
                 }
             }
             else if(this.minute == 0) {
                 if(this.hour > 0) {
                     this.hour--;
-                    this.minute = 60;
+                    this.minute = 59;
+                    this.second = 60;
                 }
             }
         }
@@ -74,23 +78,32 @@ const countdown = {
     },
 }
 
-function startCountdown(stopTime) {
-    if(stopTime) {
-        disableBtn(stopTime, 'countdownStartbtn');
-        disableBtn(!stopTime, 'countdownStopbtn');
-        countdown.start();
-    }
+function startCountdown() {
+    countdown.count();
+    countdownTimeout = setTimeout(startCountdown, 1000);
 }
 
 function sendToCountdown() {
     if(informaction) {
-        startCountdown(true);
+        disableBtn(true, 'countdownStartbtn');
+        countdown.start();
+        startCountdown();
     }
-    informaction = false;
+    else {
+        startCountdown();
+    }
 }
 
 function restartCountdown() {
-    informaction = true;
+    clearTimeout(countdownTimeout);
     countdown.restart();
     countdown.load();
+    informaction = true;
+    disableBtn(false, 'countdownStartbtn');
+}
+
+function stopCountdown() {
+    clearTimeout(countdownTimeout);
+    informaction = false;
+    disableBtn(false, 'countdownStartbtn');
 }
